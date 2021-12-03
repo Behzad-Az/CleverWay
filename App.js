@@ -10,11 +10,9 @@ import {
   View, 
   Image, 
   SafeAreaView, 
-  // Button,
   Alert,
   ScrollView,
   Dimensions
-  // Card, ListItem, Icon
 } from 'react-native';
 
 import { Card, ListItem, Button, Icon } from 'react-native-elements';
