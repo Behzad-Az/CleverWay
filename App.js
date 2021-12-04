@@ -19,8 +19,12 @@ import { Card, ListItem, Button, Icon } from 'react-native-elements';
 
 import Carousel, { PaginationLight } from 'react-native-x-carousel';
 
+import * as Progress from 'react-native-progress';
+
 const { width, height } = Dimensions.get('window');
 const propCardWidth = width - 30;
+
+const sampleMap = require('./assets/sample-map.png');
 
 export default function App() {
   const handlePress = () => Alert.prompt('My title', 'my message', text => console.log(text));
@@ -86,8 +90,7 @@ export default function App() {
 
       <Card containerStyle={styles.propCard}>
         <ScrollView>
-          <Card.Title>CARD WITH DIVIDERY</Card.Title>
-          <Card.Divider/>
+
 
           <Carousel
             pagination={PaginationLight}
@@ -97,46 +100,64 @@ export default function App() {
             autoplay={false}
           />
 
-          <Text>{'\n'}</Text>
-          <Text>{'\n'}</Text>
-          <Text>{'\n'}</Text>
+          <Text>#1101 - 1415 West Georgia St, Vancouver</Text>
+          <Text>$1,099,000 Asking</Text>
 
-          {
-            users.map((u, i) => {
-              return (
-                <View key={i} style={styles.user}>
-                  <Image
-                    style={styles.propCardImage}
-                    resizeMode="cover"
-                    source={{ uri: u.avatar }}
-                  />
-                  <Text>{'\n'}</Text>
-                  <Image
-                    style={styles.propCardImage}
-                    resizeMode="cover"
-                    source={{ uri: u.avatar }}
-                  />
-                  <Text>{'\n'}</Text>
-                  <Image
-                    style={styles.propCardImage}
-                    resizeMode="cover"
-                    source={{ uri: u.avatar }}
-                  />
-                  <Text>{'\n'}</Text>
-                  <Image
-                    style={styles.propCardImage}
-                    resizeMode="cover"
-                    source={{ uri: u.avatar }}
-                  />
-                  <Text>{'\n'}</Text>
-                  <Text style={styles.name}>{u.name}</Text>
-                </View>
-              );
-            })
-          }
+          <View style={{ flex: 1, flexDirection:'row', padding: 0, margin: 0 }}>
+            <View style={{flex: 0.25}}>
+              <Text style={{textAlign: 'center'}}>2{'\n'}Bath</Text>
+            </View>
+            <View style={{flex: 0.25}}>
+              <Text style={{textAlign: 'center'}}>2{'\n'}Bed</Text>
+            </View>
+            <View style={{flex: 0.25}}>
+              <Text style={{textAlign: 'center'}}>1,2712{'\n'}SqFt</Text>
+            </View>
+            <View style={{flex: 0.25}}>
+              <Text style={{textAlign: 'center'}}>1990{'\n'}Year Built</Text>
+            </View>
+          </View>
+
+          <Image
+            style={styles.photo}
+            source={sampleMap}
+          />
+
+          <View
+            style={{ 
+              // flex: 1, flexDirection: 'row',
+              // flexWrap: 'wrap',
+              width: propCardWidth,
+              padding: 10
+            }}
+          > 
+            <Text>
+              OUTSTANDING NEW PRICE! UNBEATABLE VALUE IN PRIME COAL HARBOUR! Welcome home to the coveted 01 plan at the Palais Georgia featuring outstanding city and water views. This 2 bed/2 bath CORNER RESIDENCE offers nearly 1300 SF of open living space; spacious bedrooms and fabulous floor to ceiling windows to capture the incredible vistas! Enjoy resort like amenities with indoor pool, hot tub and a fully equipped gym. Two underground parking stalls completes this incredible offering. Situated in one of Vancouver’s most sought after neighbourhoods this opportunity presents both value for your dollar and wonderful potential for capital appreciation. Steps to the Seawall, Marina, Vancouver’s top restaurants and amenities. At $865 p/sf; shop and compare but don’t take too long.
+            </Text>
+          </View>
+          
         </ScrollView>
+
+        <Text>{'\n'}</Text>
+        <Card.Title>CARD WITH DIVIDERY</Card.Title>
+        <Card.Divider/>
       </Card>
+
+      
+
       <StatusBar style='auto' />
+
+      <View style={{ position: 'absolute', top: height - 300 + 120 }}>
+        <Progress.Bar 
+          progress={0.3} 
+          width={propCardWidth - 50} 
+          height={15}
+          color='#32979D'
+          unfilledColor='#BFDFE1'
+          borderWidth={0}
+        />
+      </View>
+
     </SafeAreaView>
   );
 }
@@ -150,10 +171,10 @@ const styles = StyleSheet.create({
   },
   propCard: {
     width: propCardWidth,
-    maxHeight: height - 300,
+    height: height - 300,
     flexDirection:'row',
     position: 'absolute',
-    top: 90,
+    top: 110,
     overflow: 'scroll',
     backgroundColor: '#F1FDFE',
     borderRadius: 12,
@@ -193,5 +214,3 @@ const styles = StyleSheet.create({
     paddingBottom: 2,
   }
 });
-
-
