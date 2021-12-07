@@ -10,6 +10,7 @@ import {
   Image,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import axios from 'axios';
 const registerImage = require('../assets/register-image.png');
 
 const { width, height } = Dimensions.get('window');
@@ -42,16 +43,25 @@ const RegisterScreen = () => {
     formBody = formBody.join('&');
 
     try {
-      const response = await fetch(
+      const response = await axios.post(
         'https://fast-forest-63945.herokuapp.com/api/v1/signup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-          },
-          body: formBody
+          user: {
+            email,
+            password
+          }
         }
       );
-      const json = await response.json();
+      // const response = await fetch(
+      //   'https://fast-forest-63945.herokuapp.com/api/v1/signup', {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      //     },
+      //     body: formBody
+      //   }
+      // );
+      const status = await response.status;
+      console.log(status);
     } catch (error) {
       console.error(error);
     }

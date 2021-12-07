@@ -5,11 +5,12 @@
 // import PendingInvestmentSignOffScreen from './app/screens/PendingInvestmentSignOffScreen';
 // import LogInScreen from './app/screens/LogInScreen';
 // import RegisterScreen from './app/screens/RegisterScreen';
+// import Test from './app/screens/Test';
 
 // export default function App() {
 //   // return <PropCardScreen screen='propCard' />;
 //   // return <PropCardScreen2 screen='propCard' />;
-//   return <LogInScreen />;
+//   return <Test />;
 // }
 
 // // Google and FB integration

@@ -10,7 +10,6 @@ import {
   Image,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import axios from 'axios';
 const loginImage = require('../assets/login-image.png');
 
 const { width, height } = Dimensions.get('window');
@@ -34,59 +33,29 @@ const LoginScreen = () => {
   const goToRegister = () => {
     Actions.register();
   };
-
-  // const handleLogin = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       'https://fast-forest-63945.herokuapp.com/api/v1/login', {
-  //         user: {
-  //           email,
-  //           password
-  //         }
-  //       }
-  //     );
-  //     const status = await response.status;
-  //     if (status === 200) {
-  //       onChangeLoginStatus('success');
-  //       goToPropCard();
-  //     } else {
-  //       onChangeLoginStatus('failed');
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
   
   const handleLogin = async () => {
 
-    // let formBody = [];
-    // let encodedKey = encodeURIComponent('user[email]');
-    // let encodedValue = encodeURIComponent(email);
-    // formBody.push(encodedKey + '=' + encodedValue);
+    let formBody = [];
+    let encodedKey = encodeURIComponent('user[email]');
+    let encodedValue = encodeURIComponent(email);
+    formBody.push(encodedKey + '=' + encodedValue);
     
-    // encodedKey = encodeURIComponent('user[password]');
-    // encodedValue = encodeURIComponent(password);
-    // formBody.push(encodedKey + '=' + encodedValue);
-    // formBody = formBody.join('&');
-    
+    encodedKey = encodeURIComponent('user[password]');
+    encodedValue = encodeURIComponent(password);
+    formBody.push(encodedKey + '=' + encodedValue);
+    formBody = formBody.join('&');
+
     try {
-      const response = await axios.post(
+      const response = await fetch(
         'https://fast-forest-63945.herokuapp.com/api/v1/login', {
-          user: {
-            email,
-            password
-          }
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+          },
+          body: formBody
         }
       );
-      // const response = await fetch(
-      //   'https://fast-forest-63945.herokuapp.com/api/v1/login', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-      //     },
-      //     body: formBody
-      //   }
-      // );
       // const response = await response.json();
       const status = await response.status;
       if (status === 200) {
@@ -100,24 +69,24 @@ const LoginScreen = () => {
     }
   };
 
-
-
   const handleLogout = async () => {
     try {
-      const response = await axios.delete('https://fast-forest-63945.herokuapp.com/api/v1/logout');
-      // const response = await fetch(
-      //   'https://fast-forest-63945.herokuapp.com/api/v1/logout', {
-      //     method: 'DELETE',
-      //     headers: {
-      //       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-      //     }
-      //   }
-      // );
+      const response = await fetch(
+        'https://fast-forest-63945.herokuapp.com/api/v1/logout', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+          }
+        }
+      );
       const status = await response.status;
-      console.log(status);
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleGoogleLogin = () => {
+    // const config = {}
   };
 
   return (
