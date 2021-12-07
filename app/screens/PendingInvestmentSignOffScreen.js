@@ -1,7 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Download } from "react-native-feather";
-
 import { 
   StyleSheet, 
   Text, 
@@ -16,15 +13,15 @@ import {
   ScrollView,
   Dimensions
 } from 'react-native';
-
+import { StatusBar } from 'expo-status-bar';
+import { Download } from "react-native-feather";
 import { Card, ListItem, Button, Icon, CheckBox } from 'react-native-elements';
+const rocketShip = require('../assets/rocket-ship.png');
 
 const { width, height } = Dimensions.get('window');
+const getDynamicWidth = iphone11PropMaxSize => iphone11PropMaxSize / 414 * width; //Based on iPhone 11 Pro Max
+const getDynamicHeight = iphone11PropMaxSize => iphone11PropMaxSize / 896 * height; //Based on iPhone 11 Pro Max
 
-const getDynamicWidth = iphone11PropMaxSize => iphone11PropMaxSize / 414 * width;
-const getDynamicHeight = iphone11PropMaxSize => iphone11PropMaxSize / 896 * height;
-
-const rocketShip = require('../assets/rocket-ship.png');
 
 export default function PendingInvestmentSignOffScreen(props) {
   return (

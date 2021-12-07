@@ -25,7 +25,6 @@ const { width, height } = Dimensions.get('window');
 
 const getDynamicWidth = iphone11PropMaxSize => iphone11PropMaxSize / 414 * width; //Based on Iphone11ProMax
 const getDynamicHeight = iphone11PropMaxSize => iphone11PropMaxSize / 896 * height; //Based on Iphone11ProMax
-
 const defaultTopMargin = getDynamicHeight(50);
 const defaultVertlMargin = getDynamicHeight(10); 
 const defaultHorizMargin = getDynamicWidth(10);
