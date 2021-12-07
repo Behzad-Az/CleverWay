@@ -24,10 +24,9 @@ import Routes from './app/Routes.js';
 
 export default function App() {
       return (
-         <Routes />
+            <Routes />
       )
 };
-
 
 // export default App;
 // AppRegistry.registerComponent('reactTutorialApp', () => reactTutorialApp);

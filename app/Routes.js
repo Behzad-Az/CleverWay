@@ -6,7 +6,7 @@ import PropCardScreen from './screens/PropCardScreen2.js';
 
 const Routes = () => (
    <Router>
-      <Scene key = 'root'>
+      <Scene key='root'>
          <Scene 
             key='register'
             component={RegisterScreen} 
